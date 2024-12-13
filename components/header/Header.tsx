@@ -7,6 +7,7 @@ import NameNag from './NameNag';
 import Social from './Social';
 import Discription from './Discription';
 import { useThreeContext } from '@/lib/ThreeContext'; // استيراد context
+import ThemeSwitcher from "../ThemeSwitcher";
 
 export default function Header() {
   const { color, currentHoodie, isAtStart, isAtEnd, hoodieList, setCurrentHoodie, animateScene } = useHoodieStore();
@@ -30,8 +31,9 @@ export default function Header() {
 
   return (
     <div className="container mx-auto h-screen w-screen flex items-center justify-center relative">
+      <ThemeSwitcher/>
       <button
-        className={`absolute left-5 bottom-[50px] z-10 text-white px-4 py-2 rounded transition-opacity duration-300 ${isAtStart ? 'opacity-50' : 'opacity-100'}`}
+        className={`absolute left-5 bottom-[50px] z-10 dark:text-white text-black px-4 py-2 rounded transition-opacity duration-300 ${isAtStart ? 'opacity-50' : 'opacity-100'}`}
         id="prev-button"
         onClick={handlePrevClick}
         disabled={isAtStart}
@@ -39,7 +41,7 @@ export default function Header() {
         <FaArrowLeftLong />
       </button>
       <button
-        className={`absolute right-5 bottom-[50px] z-10 text-white px-4 py-2 rounded transition-opacity duration-300 ${isAtEnd ? 'opacity-50' : 'opacity-100'}`}
+        className={`absolute right-5 bottom-[50px] z-10 dark:text-white text-black px-4 py-2 rounded transition-opacity duration-300 ${isAtEnd ? 'opacity-50' : 'opacity-100'}`}
         id="next-button"
         onClick={handleNextClick}
         disabled={isAtEnd}
