@@ -2,6 +2,9 @@
 import React from 'react';
 import { useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
+import { useThree } from "@react-three/fiber";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 interface ModelProps {
   color?: string;
@@ -10,11 +13,39 @@ interface ModelProps {
 
 export default function HoodiModel({ color, logoTexturePath }: ModelProps) {
     const { nodes, materials } = useGLTF('/hoodie.glb') as any;
-  
-   
+    const {camera,scene}= useThree();
+    const tl=gsap.timeline();
+
+    
+    useGSAP(()=>{
+      gsap.set(scene.rotation,{
+        x:0.35,
+        y:-0.60,
+      });
+      gsap.set(camera.rotation,{
+        z:-0.15,
+      })
+      tl.from(
+            scene.position,
+        {
+          x:6.80,
+          opacity:0,
+          duration:2,
+          ease:'power3.out',
+        },
+      ) .to(
+        scene.rotation,
+        {
+          y:-6.80,
+          duration:2,
+          ease:'power3.out',
+        },
+      )
+    
+    },[]);
+
     const texture = logoTexturePath ? useTexture(logoTexturePath) : null;
   
-    // تأكد من تطبيق التكستشر فقط إذا كان موجودًا
     if (texture) {
       texture.wrapS = THREE.RepeatWrapping;
       texture.wrapT = THREE.RepeatWrapping;
