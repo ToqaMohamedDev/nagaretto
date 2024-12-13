@@ -1,7 +1,8 @@
+// src/components/HoodiViewer.tsx
 'use client';
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import { Center, Environment, Float, OrbitControls } from "@react-three/drei";
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
+import { Center, Environment, Float, OrbitControls } from '@react-three/drei';
 import HoodiModel from './HoodiModel';
 
 interface HoodiViewerProps {
@@ -10,7 +11,6 @@ interface HoodiViewerProps {
 }
 
 export default function HoodiViewer({ color, image }: HoodiViewerProps) {
- 
   return (
     <div className="h-screen w-full pointer-events-none">
       <Canvas>
