@@ -19,7 +19,7 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <div className=' absolute top-5 left-1'>
+    <div className=' absolute top-2 left-5'>
       <div className="flex items-center justify-center">
       <input
         type="checkbox"
