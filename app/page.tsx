@@ -24,7 +24,7 @@ export default function Home() {
       {isLoading ? (
         <PreLoader />
       ) : (
-        <div>
+        <div >
           <HeavyComponent />
         </div>
       )}

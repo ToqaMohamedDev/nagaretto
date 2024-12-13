@@ -26,7 +26,7 @@ export default function Header() {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center relative">
+    <div className="container mx-auto h-screen w-screen flex items-center justify-center relative">
       <button
         className={`absolute left-5 bottom-[50px] z-10 text-white px-4 py-2 rounded transition-opacity duration-300 ${
           isAtStart ? 'opacity-50' : 'opacity-100'
