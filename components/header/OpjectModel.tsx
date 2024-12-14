@@ -44,7 +44,7 @@ export default function OpjectModel({ color, logoTexturePath }: ModelProps) {
 
   return (
     <group dispose={null}>
-      <group scale={3.5} position={[0.006, 0.009, -0.024]}>
+      <group scale={4} position={[0.006, 0.009, -0.024]}>
         <group position={[-0.012, 0.017, 0.005]}>
           <mesh
             castShadow
