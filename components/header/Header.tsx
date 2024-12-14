@@ -2,21 +2,21 @@
 'use client';
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 import useHoodieStore from '@/lib/hoodieStore'; // استدعاء Zustand store
-import HoodiViewer from './HoodiViewer';
 import NameNag from './NameNag';
 import Social from './Social';
 import Discription from './Discription';
 import { useThreeContext } from '@/lib/ThreeContext'; // استيراد context
 import ThemeSwitcher from "../ThemeSwitcher";
+import ViewModel from "./ViewModel";
 
 export default function Header() {
-  const { color, currentHoodie, isAtStart, isAtEnd, hoodieList, setCurrentHoodie, animateScene } = useHoodieStore();
+  const { color, currentHoodie, isAtStart, isAtEnd, hoodieList,tshirtList, setCurrentHoodie, animateScene } = useHoodieStore();
   const { camera, scene } = useThreeContext(); // استخدام الـ context
 
   const handlePrevClick = () => {
     if (!isAtStart) {
       setCurrentHoodie(currentHoodie - 1);
-      animateScene(scene, camera); // تمرير المشهد والكاميرا لدالة الرسوم المتحركة
+      animateScene(scene, camera); 
 
     }
   };
@@ -24,7 +24,7 @@ export default function Header() {
   const handleNextClick = () => {
     if (!isAtEnd) {
       setCurrentHoodie(currentHoodie + 1);
-      animateScene(scene, camera); // تمرير المشهد والكاميرا لدالة الرسوم المتحركة
+      animateScene(scene, camera); 
 
     }
   };
@@ -50,7 +50,9 @@ export default function Header() {
       </button>
       <NameNag />
       <div className="w-full flex justify-center items-center">
-        <HoodiViewer color={color} image={hoodieList[currentHoodie].image} />
+        <ViewModel color={color} image={tshirtList[currentHoodie].image} />
+        {/* <HoodiViewer color={color} image={hoodieList[currentHoodie].image} /> */}
+
       </div>
       <Discription />
       <Social />

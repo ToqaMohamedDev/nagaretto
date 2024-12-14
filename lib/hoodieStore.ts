@@ -8,6 +8,12 @@ interface Hoodie {
   description: string;
   price: string;
 }
+interface Tshirt {
+  image: string;
+  colors: string[];
+  description: string;
+  price: string;
+}
 
 interface HoodieState {
   color: string;
@@ -15,6 +21,7 @@ interface HoodieState {
   isAtStart: boolean;
   isAtEnd: boolean;
   hoodieList: Hoodie[];
+  tshirtList:Tshirt[];
   setColor: (color: string) => void;
   setCurrentHoodie: (index: number) => void;
   setIsAtStart: (value: boolean) => void;
@@ -36,6 +43,20 @@ const useHoodieStore = create<HoodieState>((set) => ({
     },
     {
       image: '/base (2) (1).png',
+      colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
+      description: 'هودي بتصميم مميز يناسب كافة الأوقات والمناسبات. ستشعر بالراحة التامة بفضل خامته عالية الجودة وتصميمه العصري الذي يناسب ذوقك.',
+      price: '$49.99',
+    },
+  ],
+  tshirtList: [
+    {
+      image: '/base (1).png',
+      colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
+      description: 'هودي مريح وعصري يوفر لك الراحة والأناقة في جميع الأوقات. تصميمه الفريد يتيح لك التنقل بحرية بينما تحتفظ بمظهر عصري وجذاب.',
+      price: '$45.99',
+    },
+    {
+      image: '/base (1).png',
       colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
       description: 'هودي بتصميم مميز يناسب كافة الأوقات والمناسبات. ستشعر بالراحة التامة بفضل خامته عالية الجودة وتصميمه العصري الذي يناسب ذوقك.',
       price: '$49.99',

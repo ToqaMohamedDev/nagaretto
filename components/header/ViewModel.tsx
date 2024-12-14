@@ -5,9 +5,13 @@ import { Suspense, } from "react";
 import { Center, Environment, Float, OrbitControls, } from "@react-three/drei";
 import OpjectModel  from './OpjectModel'
 
-export default function ViewModel() {
-    const color = '#aa2727'; 
-    const image = "/base (1).png"; 
+interface ViewModelProps {
+  color: string;
+  image: string;
+}
+
+
+export default function ViewModel({color,image}:ViewModelProps) {
   return (
     <div className='h-screen w-full pointer-events-none'>
     <Canvas >
