@@ -28,8 +28,9 @@ export default function ViewModel({color,image}:ViewModelProps) {
           <OrbitControls  
         
           />
-          <Environment files="/hdr/field.hdr" />
-        </Center>
+            <Environment files="/hdr/sunflowers_4k.hdr" />
+            <ambientLight intensity={1} />
+            </Center>
       </Suspense>
     </Canvas>
   </div>
