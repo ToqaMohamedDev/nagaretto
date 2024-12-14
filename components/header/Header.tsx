@@ -8,6 +8,7 @@ import Discription from './Discription';
 import { useThreeContext } from '@/lib/ThreeContext'; // استيراد context
 import ThemeSwitcher from "../ThemeSwitcher";
 import ViewModel from "./ViewModel";
+import HoodiViewer from "./HoodiViewer";
 
 export default function Header() {
   const { color, currentHoodie, isAtStart, isAtEnd, hoodieList,tshirtList, setCurrentHoodie, animateScene } = useHoodieStore();
@@ -50,8 +51,8 @@ export default function Header() {
       </button>
       <NameNag />
       <div className="w-full flex justify-center items-center">
-        <ViewModel color={color} image={tshirtList[currentHoodie].image} />
-        {/* <HoodiViewer color={color} image={hoodieList[currentHoodie].image} /> */}
+       {/* // <ViewModel color={color} image={tshirtList[currentHoodie].image} /> */}
+        <HoodiViewer color={color} image={hoodieList[currentHoodie].image} />
 
       </div>
       <Discription />

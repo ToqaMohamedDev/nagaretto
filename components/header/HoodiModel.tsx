@@ -13,7 +13,7 @@ interface ModelProps {
 }
 
 export default function HoodiModel({ color, logoTexturePath }: ModelProps) {
-  const { nodes, materials } = useGLTF('/hoodie.glb') as any;
+  const { nodes, materials } = useGLTF('/hoodie2.glb') as any;
   const { setCamera, setScene } = useThreeContext(); // استخدام context لتخزين camera و scene
 
   const { camera, scene } = useThree();
@@ -53,4 +53,4 @@ export default function HoodiModel({ color, logoTexturePath }: ModelProps) {
   );
 }
 
-useGLTF.preload('/hoodie.glb');
+useGLTF.preload('/hoodie2.glb');
