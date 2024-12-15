@@ -1,36 +1,38 @@
 'use client';
-import React, {useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import './PreLoader.css';
 import Logo from '@/public/logo.png';
 import Image from 'next/image';
 import TextSplit from '../TextSplit';
-import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 interface PreLoaderProps {
   progress: number;
 }
 
 export default function PreLoader({ progress }: PreLoaderProps) {
-  const [animatedProgress, setAnimatedProgress] = useState(0);
-  const [animationStarted, setAnimationStarted] = useState(false);
+  const [animatedProgress, setAnimatedProgress] = useState(0); // لتحديث progress بشكل سلس
+  const [animationStarted, setAnimationStarted] = useState(false); // لتشغيل الأنيميشن مرة واحدة
 
-  useGSAP(() => {
-    // تحديث progress بشكل سلس
+  useEffect(() => {
+    // استخدام gsap لتحديث progress بشكل تدريجي
     gsap.to({ value: animatedProgress }, {
       value: progress,
-      duration: 0.5, // مدة السلاسة
+      duration: 0.5,
       onUpdate: function () {
         setAnimatedProgress(Math.round(this.targets()[0].value));
       },
     });
 
-    // تشغيل الأنيميشن بعد اكتمال progress إلى 100%
-    if (progress === 100 && !animationStarted) {
-      setAnimationStarted(true);
+    // التأكد من تشغيل الأنيميشن بعد progress 100%
+    if (animatedProgress === 100 && !animationStarted) {
+      setAnimationStarted(true); // منع تشغيل الأنيميشن مرة أخرى
       const tl = gsap.timeline();
+
+      // إعداد أنيميشن GSAP
       gsap.set('.preloader', {
         clipPath: 'circle(100% at 50% 50%)',
       });
