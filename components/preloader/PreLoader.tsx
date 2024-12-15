@@ -8,14 +8,11 @@ import Image from 'next/image';
 import TextSplit from '../TextSplit';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGLTF, useProgress } from '@react-three/drei';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function PreLoader() {
-  useGLTF.preload('/hoodie.glb');
- //useGLTF.preload('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
- const {progress}= useProgress();
+
   useGSAP(() => {
     const tl = gsap.timeline();
     gsap.set('.preloader', {
@@ -58,7 +55,6 @@ export default function PreLoader() {
     <div className="preloader">
       <Image src={Logo} alt="Logo" className="image" />
       <TextSplit classNameAll="text" classNameCarc="textcharc" text="NAGARETTO" />
-      <div className='text-red-500'>{Math.round(progress)}%</div>
     </div>
   );
 }

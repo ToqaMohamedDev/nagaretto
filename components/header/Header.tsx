@@ -9,9 +9,13 @@ import { useThreeContext } from '@/lib/ThreeContext'; // استيراد context
 import ThemeSwitcher from "../ThemeSwitcher";
 import ViewModel from "./ViewModel";
 import HoodiViewer from "./HoodiViewer";
+import { useGLTF, useProgress } from "@react-three/drei";
 
 export default function Header() {
   const { color, currentHoodie, isAtStart, isAtEnd, hoodieList,tshirtList, setCurrentHoodie, animateScene } = useHoodieStore();
+  useGLTF.preload('/hoodie.glb');
+  //useGLTF.preload('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
+  const {progress}= useProgress();
   const { camera, scene } = useThreeContext(); // استخدام الـ context
 
   const handlePrevClick = () => {
@@ -52,10 +56,16 @@ export default function Header() {
       <NameNag />
       <div className="w-full flex justify-center items-center">
        {/* // <ViewModel color={color} image={tshirtList[currentHoodie].image} /> */}
-        <HoodiViewer color={color} image={hoodieList[currentHoodie].image} />
+        {Math.round(progress)===100?
+        (<HoodiViewer color={color} image={hoodieList[currentHoodie].image} />
+        ):
+        ( <div className='absolute top-[35px] text-red-500 text-[350px]'>{Math.round(progress)}%</div>
+      )
+        }
 
       </div>
       <Discription />
+
       <Social />
     </div>
   );
