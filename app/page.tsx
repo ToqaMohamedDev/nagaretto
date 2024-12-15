@@ -5,7 +5,7 @@ import { useGLTF, useProgress } from '@react-three/drei';
 import Header from '@/components/header/Header';
 
 export default function Home() {
-  useGLTF.preload('/hoodie.glb') as any;
+  useGLTF.preload('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
   const { progress } = useProgress();
   return (
     <>
@@ -22,7 +22,7 @@ export default function Home() {
 /*
 git init
 git add .
-git commit -m "first34"
+git commit -m "first35"
 git branch -M main
 git remote add origin https://github.com/ToqaMohamedDev/nagaretto.git
 git push -u origin main
