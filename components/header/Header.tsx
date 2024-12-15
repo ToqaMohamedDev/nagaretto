@@ -11,6 +11,7 @@ import HoodiViewer from "./HoodiViewer";
 import { useGLTF, useProgress } from "@react-three/drei";
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
+import ViewModel from "./ViewModel";
 
 export default function Header() {
   const {
@@ -19,11 +20,12 @@ export default function Header() {
     isAtStart,
     isAtEnd,
     hoodieList,
+    tshirtList,
     setCurrentHoodie,
     animateScene,
   } = useHoodieStore();
 
-  useGLTF('/hoodie.glb');
+  useGLTF('/tshirt.glb');
   const { progress } = useProgress();
   const { camera, scene } = useThreeContext(); // استخدام الـ context
   const [displayProgress, setDisplayProgress] = useState(0); // لحفظ القيمة المتحركة
@@ -84,7 +86,7 @@ export default function Header() {
       <NameNag />
       <div className="w-full flex justify-center items-center">
         {Math.round(progress) === 100 ? (
-          <HoodiViewer color={color} image={hoodieList[currentHoodie].image} />
+          <ViewModel color={color} image={tshirtList[currentHoodie].image} />
         ) : (
           <div className="absolute top-[35px] text-red-500 text-[50px]">
             <div ref={progressRef}>{displayProgress}%</div>
