@@ -13,7 +13,7 @@ import { useGLTF, useProgress } from '@react-three/drei';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function PreLoader() {
- useGLTF.preload('/hoodie.glb') as any;
+ useGLTF.preload('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
  const {progress}= useProgress();
   useGSAP(() => {
     const tl = gsap.timeline();
