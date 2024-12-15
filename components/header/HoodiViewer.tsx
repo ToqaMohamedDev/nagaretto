@@ -20,7 +20,10 @@ export default function HoodiViewer({ color, image }: HoodiViewerProps) {
             rotationIntensity={0.1}
             floatIntensity={1}
           >
+            <Suspense fallback={null}>
             <HoodiModel color={color} logoTexturePath={image} />
+
+            </Suspense>
             </Float>
             <OrbitControls
               enableZoom={false}    
