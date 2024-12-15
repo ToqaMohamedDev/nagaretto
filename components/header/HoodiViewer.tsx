@@ -1,4 +1,3 @@
-// src/components/HoodiViewer.tsx
 'use client';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
@@ -16,10 +15,20 @@ export default function HoodiViewer({ color, image }: HoodiViewerProps) {
       <Canvas>
         <Suspense fallback={null}>
           <Center>
+          <Float
+            speed={5}
+            rotationIntensity={0.1}
+            floatIntensity={1}
+          >
             <HoodiModel color={color} logoTexturePath={image} />
-            <OrbitControls enableZoom={false} />
+            </Float>
+            <OrbitControls
+              enableZoom={false}    
+              enablePan={false}     
+            enableDamping={false}
+            />
             <Environment files="/hdr/sunflowers_4k.hdr" />
-            <ambientLight intensity={1} />
+            <ambientLight intensity={0.5} />
           </Center>
         </Suspense>
       </Canvas>

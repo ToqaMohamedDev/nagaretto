@@ -12,6 +12,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function PreLoader() {
+  
   useGSAP(() => {
     const tl = gsap.timeline();
 
