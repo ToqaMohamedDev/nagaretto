@@ -1,13 +1,13 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import gsap from 'gsap';
 import './PreLoader.css';
 import Logo from '@/public/logo.png';
 import Image from 'next/image';
 import TextSplit from '../TextSplit';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 interface PreLoaderProps {
   progress: number;
@@ -17,7 +17,7 @@ export default function PreLoader({ progress }: PreLoaderProps) {
   const [animatedProgress, setAnimatedProgress] = useState(0);
   const [animationStarted, setAnimationStarted] = useState(false);
 
-  useEffect(() => {
+  useGSAP(() => {
     // تحديث progress بشكل سلس
     gsap.to({ value: animatedProgress }, {
       value: progress,
