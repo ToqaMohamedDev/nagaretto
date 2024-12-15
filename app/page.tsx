@@ -11,7 +11,7 @@ const HeavyComponent = dynamic(() => import('@/components/header/Header'), {
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  useGLTF.preload('/hoodie.glb');
+  useGLTF('/hoodie.glb');
   const {progress}= useProgress();
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -36,7 +36,7 @@ export default function Home() {
 /*
 git init
 git add .
-git commit -m "first29"
+git commit -m "first30"
 git branch -M main
 git remote add origin https://github.com/ToqaMohamedDev/nagaretto.git
 git push -u origin main
