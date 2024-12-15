@@ -12,8 +12,7 @@ import { useGLTF, useProgress } from "@react-three/drei";
 
 export default function Header() {
   const { color, currentHoodie, isAtStart, isAtEnd, hoodieList,tshirtList, setCurrentHoodie, animateScene } = useHoodieStore();
-  useGLTF('/hoodie.glb');
-  const {progress}= useProgress();
+
   const { camera, scene } = useThreeContext(); // استخدام الـ context
   const handlePrevClick = () => {
     if (!isAtStart) {
@@ -52,12 +51,13 @@ export default function Header() {
       <NameNag />
       <div className="w-full flex justify-center items-center">
        {/* // <ViewModel color={color} image={tshirtList[currentHoodie].image} /> */}
-        {Math.round(progress)===100?
-        (<HoodiViewer color={color} image={hoodieList[currentHoodie].image} />
-        ):
+        {/* {Math.round(progress)===100?
+        ( */}
+        <HoodiViewer color={color} image={hoodieList[currentHoodie].image} />
+        {/* ):
         ( <div className='absolute top-[35px] text-red-500 text-[350px]'>{Math.round(progress)}%</div>
       )
-        }
+        } */}
 
       </div>
       <Discription />

@@ -10,8 +10,10 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
-
-export default function PreLoader() {
+interface PreLoaderPeops{
+  progress:number
+}
+export default function PreLoader({progress}:PreLoaderPeops) {
 
   useGSAP(() => {
     const tl = gsap.timeline();
@@ -55,6 +57,7 @@ export default function PreLoader() {
     <div className="preloader">
       <Image src={Logo} alt="Logo" className="image" />
       <TextSplit classNameAll="text" classNameCarc="textcharc" text="NAGARETTO" />
+      <div className=' text-red-500 text-[30px]'>{Math.round(progress)}%</div>
     </div>
   );
 }

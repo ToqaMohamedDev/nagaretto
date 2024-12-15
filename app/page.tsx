@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import dynamic from "next/dynamic";
 import PreLoader from "@/components/preloader/PreLoader";
+import { useGLTF, useProgress } from '@react-three/drei';
 
 const HeavyComponent = dynamic(() => import('@/components/header/Header'), {
   ssr: false,
@@ -10,7 +11,8 @@ const HeavyComponent = dynamic(() => import('@/components/header/Header'), {
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-
+  useGLTF.preload('/hoodie.glb');
+  const {progress}= useProgress();
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -22,7 +24,7 @@ export default function Home() {
   return (
     <>
       {isLoading ? (
-        <PreLoader />
+        <PreLoader  progress={progress}/>
       ) : (
         <div >
           <HeavyComponent />
@@ -34,7 +36,7 @@ export default function Home() {
 /*
 git init
 git add .
-git commit -m "first28"
+git commit -m "first29"
 git branch -M main
 git remote add origin https://github.com/ToqaMohamedDev/nagaretto.git
 git push -u origin main
