@@ -13,17 +13,15 @@ import { useGLTF, useProgress } from '@react-three/drei';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function PreLoader() {
-//  useGLTF.preload('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
-//  const {progress}= useProgress();
+  useGLTF.preload('/hoodie2.glb');
+ //useGLTF.preload('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
+ const {progress}= useProgress();
   useGSAP(() => {
     const tl = gsap.timeline();
-
-    // إعداد الأنيميشن للبريلودر
     gsap.set('.preloader', {
       clipPath: 'circle(100% at 50% 50%)',
     });
 
-    // تشغيل الأنيميشن
     tl.to('.image', {
       y: 20,
       opacity: 1,
@@ -60,7 +58,7 @@ export default function PreLoader() {
     <div className="preloader">
       <Image src={Logo} alt="Logo" className="image" />
       <TextSplit classNameAll="text" classNameCarc="textcharc" text="NAGARETTO" />
-      {/* <div>{Math.round(progress)}%</div> */}
+      <div className='text-red-500'>{Math.round(progress)}%</div>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 import {  useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { useThree } from '@react-three/fiber';
-import { useThreeContext } from '@/lib/ThreeContext'; // استيراد context
+import { useThreeContext } from '@/lib/ThreeContext'; 
 import React from 'react';
 import useHoodieStore from '@/lib/hoodieStore';
 import { useGSAP } from '@gsap/react';
@@ -15,7 +15,7 @@ interface ModelProps {
 export default function HoodiModel({ color, logoTexturePath }: ModelProps) {
   //  const { nodes, materials } = useGLTF('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
 
- const { nodes, materials } = useGLTF('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
+ const { nodes, materials } = useGLTF('/hoodie2.glb') as any;
  const { setCamera, setScene } = useThreeContext(); // استخدام context لتخزين camera و scene
   const stop=false;
   const { camera, scene } = useThree();
@@ -55,5 +55,5 @@ export default function HoodiModel({ color, logoTexturePath }: ModelProps) {
     </group>
   );
 }
- useGLTF.preload('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb');
 
+useGLTF.preload('/hoodie2.glb');
