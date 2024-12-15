@@ -1,5 +1,5 @@
 'use client';
-import {  useGLTF, useTexture } from '@react-three/drei';
+import {  Text, useGLTF, useProgress, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { useThree } from '@react-three/fiber';
 import { useThreeContext } from '@/lib/ThreeContext'; 
@@ -17,7 +17,9 @@ export default function HoodiModel({ color, logoTexturePath }: ModelProps) {
 
  const { nodes, materials } = useGLTF('/hoodie.glb') as any;
  const { setCamera, setScene } = useThreeContext(); // استخدام context لتخزين camera و scene
-  const stop=false;
+ const { progress } = useProgress();
+
+ const stop=false;
   const { camera, scene } = useThree();
 
   React.useEffect(() => {
@@ -51,6 +53,7 @@ export default function HoodiModel({ color, logoTexturePath }: ModelProps) {
         <mesh castShadow receiveShadow geometry={nodes.Object_3.geometry} material={materials.HOODIE_FRONT_5197361} />
         <mesh castShadow receiveShadow geometry={nodes.Object_4.geometry} material={materials.HOODIE_FRONT_5197361} />
         <mesh castShadow receiveShadow geometry={nodes.Object_5.geometry} material={materials.HOODIE_FRONT_5197361} />
+      
       </group>
     </group>
   );
