@@ -8,11 +8,9 @@ import Discription from './Discription';
 import { useThreeContext } from '@/lib/ThreeContext'; // استيراد context
 import ThemeSwitcher from "../ThemeSwitcher";
 import HoodiViewer from "./HoodiViewer";
-import { useGLTF, useProgress } from "@react-three/drei";
 
 export default function Header() {
   const { color, currentHoodie, isAtStart, isAtEnd, hoodieList,tshirtList, setCurrentHoodie, animateScene } = useHoodieStore();
-
   const { camera, scene } = useThreeContext(); // استخدام الـ context
   const handlePrevClick = () => {
     if (!isAtStart) {

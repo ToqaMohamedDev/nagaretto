@@ -1,38 +1,34 @@
 'use client';
 import { useState, useEffect } from 'react';
-import dynamic from "next/dynamic";
 import PreLoader from "@/components/preloader/PreLoader";
 import { useGLTF, useProgress } from '@react-three/drei';
-
-const HeavyComponent = dynamic(() => import('@/components/header/Header'), {
-  ssr: false,
-  loading: () => <div></div>, 
-});
+import Header from '@/components/header/Header';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  useGLTF('/hoodie.glb');
-  const {progress}= useProgress();
+  useGLTF.preload('/hoodie.glb') as any;
+  const { progress } = useProgress();
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); 
+    }, 3000);
 
     return () => clearTimeout(timer); // تنظيف المؤقت عند التفكيك
   }, []);
 
   return (
     <>
-      {isLoading ? (
-        <PreLoader  progress={progress}/>
-      ) : (
-        <div >
-          <HeavyComponent />
-        </div>
-      )}
+      <PreLoader progress={progress} />
+      <div>
+        {Math.round(progress) === 100 && !isLoading && (
+          <Header />
+        )}
+      </div>
     </>
   );
 }
+
 /*
 git init
 git add .

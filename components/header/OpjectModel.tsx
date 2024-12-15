@@ -6,13 +6,14 @@ import { useThreeContext } from '@/lib/ThreeContext'; // استيراد context
 import React from 'react';
 import useHoodieStore from '@/lib/hoodieStore';
 import { useGSAP } from '@gsap/react';
+
 interface ModelProps {
   color?: string;
   logoTexturePath?: string; // مسار التكستشر
 }
 
 export default function OpjectModel({ color, logoTexturePath }: ModelProps) {
-  const { nodes, materials } = useGLTF('/tshirt.glb') as any;
+  const { nodes, materials } = useGLTF('/tshirt.glb', true) as any;
   const { setCamera, setScene } = useThreeContext(); // استخدام context لتخزين camera و scene
 
   // استخدام useThree للحصول على الـ camera و الـ scene وتحديث الـ context
