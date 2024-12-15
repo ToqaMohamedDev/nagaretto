@@ -20,7 +20,7 @@ export default function Discription() {
           />
         ))}
       </div> */}
-      <p className="xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  dark:text-gray-400 text-gray-700   font-semibold sm:w-[400px] w-[290px] text-right">{hoodieList[currentHoodie]?.description}</p>
+      <p className="discription xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  dark:text-gray-400 text-gray-700   font-semibold sm:w-[400px] w-[290px] text-right">{hoodieList[currentHoodie]?.description}</p>
       <p className="xl:text-[22px] lg:text-[20px] md:text-[18px] text-[16px] dark:text-gray-400 text-gray-700 font-bold text-right">{hoodieList[currentHoodie]?.price}</p>
     </div>
   );
