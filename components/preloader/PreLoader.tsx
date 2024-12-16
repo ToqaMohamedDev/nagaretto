@@ -6,19 +6,16 @@ import Logo from '@/public/logo.png';
 import Image from 'next/image';
 import TextSplit from '../TextSplit';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import useStore from '@/lib/hoodieStore';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface PreLoaderProps {
-  progress: number;
-}
-
-export default function PreLoader({ progress }: PreLoaderProps) {
+export default function PreLoader() {
   const [animatedProgress, setAnimatedProgress] = useState(0); // لتحديث progress بشكل سلس
   const [animationStarted, setAnimationStarted] = useState(false); // لتشغيل الأنيميشن مرة واحدة
 
+  const {progress}=useStore();
   useEffect(() => {
-    // استخدام gsap لتحديث progress بشكل تدريجي
     gsap.to({ value: animatedProgress }, {
       value: progress,
       duration: 0.5,
@@ -27,12 +24,10 @@ export default function PreLoader({ progress }: PreLoaderProps) {
       },
     });
 
-    // التأكد من تشغيل الأنيميشن بعد progress 100%
     if (animatedProgress === 100 && !animationStarted) {
       setAnimationStarted(true); // منع تشغيل الأنيميشن مرة أخرى
       const tl = gsap.timeline();
 
-      // إعداد أنيميشن GSAP
       gsap.set('.preloader', {
         clipPath: 'circle(100% at 50% 50%)',
       });

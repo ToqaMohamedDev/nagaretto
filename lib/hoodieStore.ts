@@ -32,11 +32,14 @@ interface StoreState {
   hoodieList: Hoodie[];
   tshirtList: Tshirt[];
 
+  // progress للتحميل
+  progress: number;
+  setProgress: (value: number) => void;
+
   setColor: (color: string) => void;
   setCurrentHoodie: (index: number) => void;
   setIsAtStart: (value: boolean) => void;
   setIsAtEnd: (value: boolean) => void;
-
   animateScene: (scene: Scene, camera: Camera) => void;
 }
 
@@ -58,50 +61,60 @@ const useStore = create<StoreState>((set) => ({
       price: '$45.99',
     },
     {
-      image: '/base (2) (5).webp',
-      colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
-      description: 'هودي مريح وعصري يوفر لك الراحة والأناقة في جميع الأوقات. تصميمه الفريد يتيح لك التنقل بحرية بينما تحتفظ بمظهر عصري وجذاب.',
-      price: '$45.99',
-    },
-    {
       image: '/base (2) (2).webp',
-      colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
-      description: 'هودي بتصميم مميز يناسب كافة الأوقات والمناسبات. ستشعر بالراحة التامة بفضل خامته عالية الجودة وتصميمه العصري الذي يناسب ذوقك.',
+      colors: ['#ffffff', '#ff6347', '#32cd32', '#8a2be2'],
+      description: 'هودي أنيق ومناسب لجميع الفصول. مصنوع من قماش عالي الجودة لتوفير أقصى درجات الراحة.',
       price: '$49.99',
     },
     {
       image: '/base (2) (3).webp',
-      colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
-      description: 'هودي بتصميم مميز يناسب كافة الأوقات والمناسبات. ستشعر بالراحة التامة بفضل خامته عالية الجودة وتصميمه العصري الذي يناسب ذوقك.',
-      price: '$49.99',
+      colors: ['#ffa500', '#4682b4', '#ff1493', '#2e8b57'],
+      description: 'هودي رياضي بتصميم عصري. مثالي للأنشطة الخارجية والمغامرات.',
+      price: '$39.99',
     },
     {
       image: '/base (2) (4).webp',
-      colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
-      description: 'هودي بتصميم مميز يناسب كافة الأوقات والمناسبات. ستشعر بالراحة التامة بفضل خامته عالية الجودة وتصميمه العصري الذي يناسب ذوقك.',
-      price: '$49.99',
+      colors: ['#ffa500', '#4682b4', '#ff1493', '#2e8b57'],
+      description: 'هودي رياضي بتصميم عصري. مثالي للأنشطة الخارجية والمغامرات.',
+      price: '$39.99',
+    },
+    {
+      image: '/base (2) (5).webp',
+      colors: ['#ffa500', '#4682b4', '#ff1493', '#2e8b57'],
+      description: 'هودي رياضي بتصميم عصري. مثالي للأنشطة الخارجية والمغامرات.',
+      price: '$39.99',
     },
     {
       image: '/base (2) (6).webp',
-      colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
-      description: 'هودي بتصميم مميز يناسب كافة الأوقات والمناسبات. ستشعر بالراحة التامة بفضل خامته عالية الجودة وتصميمه العصري الذي يناسب ذوقك.',
-      price: '$49.99',
+      colors: ['#ffa500', '#4682b4', '#ff1493', '#2e8b57'],
+      description: 'هودي رياضي بتصميم عصري. مثالي للأنشطة الخارجية والمغامرات.',
+      price: '$39.99',
     },
   ],
   tshirtList: [
     {
       image: '/base (1).png',
       colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
-      description: 'هودي مريح وعصري يوفر لك الراحة والأناقة في جميع الأوقات. تصميمه الفريد يتيح لك التنقل بحرية بينما تحتفظ بمظهر عصري وجذاب.',
-      price: '$45.99',
+      description: 'تيشيرت خفيف ومريح مناسب لفصل الصيف. متوفر بمجموعة من الألوان العصرية.',
+      price: '$19.99',
     },
     {
-      image: '/base (1).png',
-      colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
-      description: 'هودي بتصميم مميز يناسب كافة الأوقات والمناسبات. ستشعر بالراحة التامة بفضل خامته عالية الجودة وتصميمه العصري الذي يناسب ذوقك.',
-      price: '$49.99',
+      image: '/tshirt2.png',
+      colors: ['#ffffff', '#ff69b4', '#1e90ff', '#228b22'],
+      description: 'تيشيرت رياضي بأقمشة تسمح بالتهوية. مثالي للتمارين اليومية.',
+      price: '$25.99',
+    },
+    {
+      image: '/tshirt3.png',
+      colors: ['#d2691e', '#9400d3', '#ff4500', '#708090'],
+      description: 'تيشيرت كلاسيكي بتصميم بسيط وأنيق. مناسب لجميع الأوقات.',
+      price: '$22.99',
     },
   ],
+
+  // progress
+  progress: 0,
+  setProgress: (value) => set({ progress: value }),
 
   setColor: (color: string) => set({ color }),
   setCurrentHoodie: (index: number) =>
@@ -123,23 +136,15 @@ const useStore = create<StoreState>((set) => ({
     gsap.set(camera.rotation, {
       z: -0.15,
     });
-    tl
-    .fromTo(scene.position, {
-      x: 6.80,
-      opacity: 0,
-      duration: 2,
-      ease: 'power3.out',
-    },{
-      x: 0,
-      opacity: 1,
-      duration: 2,
-      ease: 'power3.out',
-    },)
-    .to(scene.rotation, {
+    tl.fromTo(
+      scene.position,
+      { x: 6.80, opacity: 0, duration: 2, ease: 'power3.out' },
+      { x: 0, opacity: 1, duration: 2, ease: 'power3.out' },
+    ).to(scene.rotation, {
       y: -6.80,
       duration: 2,
       ease: 'power3.out',
-    },);
+    });
   },
 }));
 

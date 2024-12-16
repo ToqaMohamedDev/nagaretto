@@ -10,7 +10,8 @@ import ThemeSwitcher from "../ThemeSwitcher";
 import HoodiViewer from "./HoodiViewer";
 
 export default function Header() {
-  const { color, currentHoodie, isAtStart, isAtEnd, hoodieList,tshirtList, setCurrentHoodie, animateScene } = useHoodieStore();
+  const { color, currentHoodie, isAtStart, isAtEnd, hoodieList,tshirtList,
+     setCurrentHoodie, animateScene } = useHoodieStore();
   const { camera, scene } = useThreeContext(); // استخدام الـ context
   const handlePrevClick = () => {
     if (!isAtStart) {

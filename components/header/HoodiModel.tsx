@@ -3,9 +3,10 @@ import {  Text, useGLTF, useProgress, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { useThree } from '@react-three/fiber';
 import { useThreeContext } from '@/lib/ThreeContext'; 
-import React from 'react';
+import React, { useEffect } from 'react';
 import useHoodieStore from '@/lib/hoodieStore';
 import { useGSAP } from '@gsap/react';
+import useStore from '@/lib/hoodieStore';
 
 interface ModelProps {
   color?: string;
@@ -15,22 +16,22 @@ interface ModelProps {
 export default function HoodiModel({ color, logoTexturePath }: ModelProps) {
   //  const { nodes, materials } = useGLTF('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
 
- const { nodes, materials } = useGLTF('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
+ const { nodes, materials } = useGLTF('/hoodie.glb') as any;
  const { setCamera, setScene } = useThreeContext(); // استخدام context لتخزين camera و scene
  const { progress } = useProgress();
+ const setProgress = useStore((state) => state.setProgress);
+ useEffect(() => {
+  setProgress(progress);
+}, [progress, setProgress]);
 
- const stop=false;
   const { camera, scene } = useThree();
-
-  React.useEffect(() => {
-    setCamera(camera);
-    setScene(scene);
-  }, [stop]);
   const { animateScene } = useHoodieStore();
   
   useGSAP(() => {
+    setCamera(camera);
+    setScene(scene);
     animateScene(scene, camera); 
-  }, [stop]);
+  }, []);
   const texture = logoTexturePath ? useTexture(logoTexturePath) : null;
 
   if (texture) {
@@ -59,3 +60,4 @@ export default function HoodiModel({ color, logoTexturePath }: ModelProps) {
   );
 }
 
+useGLTF.preload('/hoodie.glb') as any;
