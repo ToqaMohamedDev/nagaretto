@@ -85,13 +85,29 @@ body {
   height: 30px;
   position: relative;
   display: block;
-  background: #ebebeb;
   border-radius: 200px;
-  box-shadow: inset 0px 5px 5px rgba(0,0,0,0.4), inset 0px -5px 15px  rgba(255,255,255,0.4);
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
+  border: none;
+}
+
+@media (prefers-color-scheme: light) {
+  .btn {
+    box-shadow: 
+      inset 5px 5px 10px rgba(0, 0, 0, 0.2), /* ظل داخلي غامق خفيف */
+      inset -5px -5px 10px rgba(255, 255, 255, 0.6); /* ظل داخلي فاتح واضح */
   }
-  
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn {
+    box-shadow: 
+      inset 5px 5px 10px rgba(0, 0, 0, 0.6), /* ظل داخلي غامق */
+      inset -5px -5px 10px rgba(255, 255, 255, 0.1); /* ظل داخلي فاتح خافت */
+  }
+}
+
+
   .btn::after {
     will-change: transform;
     width: 20px;

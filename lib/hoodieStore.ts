@@ -6,7 +6,6 @@ import { Scene, Camera } from 'three';
 // تعريف الواجهة لاحتواء البيانات المشتركة
 interface Hoodie {
   image: string;
-  colors: string[];
   description: string;
   price: string;
 }
@@ -56,38 +55,32 @@ const useStore = create<StoreState>((set) => ({
   hoodieList: [
     {
       image: '/base (2) (1).webp',
-      colors: ['#000000', '#0000ff', '#ff4500', '#808080'],
-      description: 'هودي مريح وعصري يوفر لك الراحة والأناقة في جميع الأوقات. تصميمه الفريد يتيح لك التنقل بحرية بينما تحتفظ بمظهر عصري وجذاب.',
+      description: 'A cozy and stylish hoodie that keeps you warm and fashionable all day. Perfect for casual outings or lounging at home.',
       price: '$45.99',
     },
     {
       image: '/base (2) (2).webp',
-      colors: ['#ffffff', '#ff6347', '#32cd32', '#8a2be2'],
-      description: 'هودي أنيق ومناسب لجميع الفصول. مصنوع من قماش عالي الجودة لتوفير أقصى درجات الراحة.',
+      description: 'This lightweight hoodie combines premium comfort with a sleek look. Ideal for layering or wearing on its own.',
       price: '$49.99',
     },
     {
       image: '/base (2) (3).webp',
-      colors: ['#ffa500', '#4682b4', '#ff1493', '#2e8b57'],
-      description: 'هودي رياضي بتصميم عصري. مثالي للأنشطة الخارجية والمغامرات.',
+      description: 'Designed for an active lifestyle, this hoodie offers breathable fabric and a modern design for any adventure.',
       price: '$39.99',
     },
     {
       image: '/base (2) (4).webp',
-      colors: ['#ffa500', '#4682b4', '#ff1493', '#2e8b57'],
-      description: 'هودي رياضي بتصميم عصري. مثالي للأنشطة الخارجية والمغامرات.',
+      description: 'A versatile hoodie crafted for both style and functionality. The perfect companion for chilly mornings and relaxed evenings.',
       price: '$39.99',
     },
     {
       image: '/base (2) (5).webp',
-      colors: ['#ffa500', '#4682b4', '#ff1493', '#2e8b57'],
-      description: 'هودي رياضي بتصميم عصري. مثالي للأنشطة الخارجية والمغامرات.',
+      description: 'Stay comfortable and chic with this hoodie. Its soft material and minimalist design make it a wardrobe essential.',
       price: '$39.99',
     },
     {
       image: '/base (2) (6).webp',
-      colors: ['#ffa500', '#4682b4', '#ff1493', '#2e8b57'],
-      description: 'هودي رياضي بتصميم عصري. مثالي للأنشطة الخارجية والمغامرات.',
+      description: 'Elevate your casual wear with this trendy hoodie. Perfect for running errands or hanging out with friends.',
       price: '$39.99',
     },
   ],

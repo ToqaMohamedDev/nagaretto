@@ -58,12 +58,6 @@ export default function PreLoader() {
         )
         .to('.text', { opacity: 0 }, 2)
         .to('.image', { opacity: 0 }, 2)
-        .to('body', {
-          duration: 0.01,
-          css: {
-            overflowY: 'scroll',
-          },
-        })
         .to(
           '.preloader',
           {

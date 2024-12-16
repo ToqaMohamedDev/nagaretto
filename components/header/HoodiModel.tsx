@@ -59,5 +59,6 @@ export default function HoodiModel({ color, logoTexturePath }: ModelProps) {
     </group>
   );
 }
+//useGLTF.preload('https://res.cloudinary.com/dqvacnmu8/image/upload/v1734187741/eyfsjnvauu5bqvnh4k6z.glb') as any;
 
 useGLTF.preload('/hoodie.glb') as any;

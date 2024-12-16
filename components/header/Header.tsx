@@ -8,6 +8,7 @@ import Discription from './Discription';
 import { useThreeContext } from '@/lib/ThreeContext'; // استيراد context
 import ThemeSwitcher from "../ThemeSwitcher";
 import HoodiViewer from "./HoodiViewer";
+import Dev from "./Dev";
 
 export default function Header() {
   const { color, currentHoodie, isAtStart, isAtEnd, hoodieList,tshirtList,
@@ -49,18 +50,10 @@ export default function Header() {
       </button>
       <NameNag />
       <div className="w-full flex justify-center items-center">
-       {/* // <ViewModel color={color} image={tshirtList[currentHoodie].image} /> */}
-        {/* {Math.round(progress)===100?
-        ( */}
         <HoodiViewer color={color} image={hoodieList[currentHoodie].image} />
-        {/* ):
-        ( <div className='absolute top-[35px] text-red-500 text-[350px]'>{Math.round(progress)}%</div>
-      )
-        } */}
-
       </div>
       <Discription />
-
+      <Dev/>
       <Social />
     </div>
   );
