@@ -14,7 +14,8 @@ export default function PreLoader() {
   const [animatedProgress, setAnimatedProgress] = useState(0); // لتحديث progress بشكل سلس
   const [animationStarted, setAnimationStarted] = useState(false); // لتشغيل الأنيميشن مرة واحدة
 
-  const {progress}=useStore();
+  const { progress } = useStore();
+
   useEffect(() => {
     gsap.to({ value: animatedProgress }, {
       value: progress,
@@ -74,15 +75,32 @@ export default function PreLoader() {
             },
           },
           '-=1'
-        );
+        )
+        ;
     }
   }, [progress, animatedProgress, animationStarted]);
 
   return (
-    <div className="preloader">
+<div className="preloader">
+  {animatedProgress < 100 ? (
+    <>
+      <div className="w-[200px] h-[20px] bg-gray-700 rounded-full overflow-hidden mt-6 relative">
+        <div
+          className="h-full bg-red-700 transition-all duration-300"
+          style={{ width: `${animatedProgress}%` }}
+        ></div>
+        <div className="absolute inset-0 flex justify-center items-center text-white font-medium">
+          {animatedProgress}%
+        </div>
+      </div>
+    </>
+  ) : (
+    <>
       <Image src={Logo} alt="Logo" className="image" />
       <TextSplit classNameAll="text" classNameCarc="textcharc" text="NAGARETTO" />
-      <div className="text-red-500 text-[30px]">{animatedProgress}%</div>
-    </div>
+    </>
+  )}
+</div>
+
   );
 }

@@ -130,7 +130,7 @@ body {
   width: 15px;
   height:15px;
   top: 7px;
-  z-index: 100;
+  z-index: 50;
   left: 7px;
   fill: #fff;
   transition: 1.3s;
@@ -140,7 +140,7 @@ body {
     width: 15px;
     height:15px;
     top: 7px;
-    z-index: 100;
+    z-index: 50;
     left: 47px;
     fill: #fff;
     transition: 0.3s;

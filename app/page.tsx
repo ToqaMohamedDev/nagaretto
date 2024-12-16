@@ -1,11 +1,8 @@
 'use client';
-import { useState, useEffect } from 'react';
 import PreLoader from "@/components/preloader/PreLoader";
-import { useGLTF, useProgress } from '@react-three/drei';
 import Header from '@/components/header/Header';
 
 export default function Home() {
- 
   return (
     <>
       <PreLoader  />

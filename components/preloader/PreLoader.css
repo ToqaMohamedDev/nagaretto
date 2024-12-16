@@ -5,7 +5,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 50;
+    z-index: 55;
     gap: 25px;
     display: flex;
     justify-content: center;
@@ -43,3 +43,4 @@
         font-size: 30px;
     }
 }
+
