@@ -16,6 +16,8 @@
     "@react-three/fiber": "^8.17.10",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^13.0.1",
     "framer-motion": "^11.13.3",
     "gsap": "^3.12.5",
     "leva": "^0.9.35",

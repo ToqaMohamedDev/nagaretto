@@ -16,7 +16,7 @@ export default function Home() {
 /*
 git init
 git add .
-git commit -m "first42"
+git commit -m "first43"
 git branch -M main
 git remote add origin https://github.com/ToqaMohamedDev/nagaretto.git
 git push -u origin main
