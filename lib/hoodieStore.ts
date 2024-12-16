@@ -122,10 +122,15 @@ const useStore = create<StoreState>((set) => ({
   // الوظيفة الخاصة بالرسوم المتحركة
   animateScene: (scene: Scene, camera: Camera) => {
     const tl = gsap.timeline();
+    gsap.set( scene.position, {
+      y:0.1
+
+    });
     gsap.set(scene.rotation, {
       x: 0.35,
       y: -0.60,
     });
+
     gsap.set(camera.rotation, {
       z: -0.15,
     });

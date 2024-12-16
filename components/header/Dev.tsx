@@ -10,7 +10,7 @@ export default function Dev() {
     const [dev, setDev] = useState(false);
 
     return (
-        <div className={`flex flex-col absolute bottom-[50px] items-center justify-center  bg-secondary h-[35px] rounded-3xl  px-2 z-30 transition-all duration-300 ease-in-out 
+        <div className={`flex flex-col absolute bottom-[55px] items-center justify-center  bg-secondary h-[35px] rounded-3xl  px-2 z-30 transition-all duration-300 ease-in-out 
             ${dev ? "w-[120px]" : "w-[80px]"}`}>
             <div
                 className="cursor-pointer text-white py-1 "
@@ -19,7 +19,8 @@ export default function Dev() {
                     onClick={() => setDev(true)}
                        >DEV</div>) : (
                     <div className="relative flex items-center justify-center">
-                         <div className="absolute -top-5 "><GiCancel 
+                         <div className="absolute -top-3 "><GiCancel 
+                          className="text-secondary dark:text-white"
                           onClick={()=>setDev(false)}
                          />
                          </div>
