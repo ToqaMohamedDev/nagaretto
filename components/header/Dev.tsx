@@ -11,7 +11,7 @@ export default function Dev() {
 
     return (
         <div className={`flex flex-col absolute bottom-[55px] items-center justify-center  bg-secondary h-[35px] rounded-3xl  px-2 z-30 transition-all duration-300 ease-in-out 
-            ${dev ? "w-[120px]" : "w-[80px]"}`}>
+            ${dev ? "w-[140px]" : "w-[80px]"}`}>
             <div
                 className="cursor-pointer text-white py-1 "
             >
@@ -19,12 +19,9 @@ export default function Dev() {
                     onClick={() => setDev(true)}
                        >DEV</div>) : (
                     <div className="relative flex items-center justify-center">
-                         <div className="absolute -top-3 "><GiCancel 
-                          className="text-secondary dark:text-white"
-                          onClick={()=>setDev(false)}
-                         />
-                         </div>
+                       
                         <div className="flex space-x-3 px-5 py-3">
+                      
                             <a
                                 href="https://www.facebook.com/alaa.taha.71271466?mibextid=ZbWKwL"
                                 target="_blank"
@@ -40,8 +37,12 @@ export default function Dev() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <FaWhatsapp className="dark:text-white text-gray-600 lg:text-[22px] text-[18px] hover:text-pink-500 dark:hover:text-pink-500" />
+                                <FaWhatsapp className="dark:text-white text-gray-600 lg:text-[22px] text-[18px] hover:text-green-500 dark:hover:text-green-500" />
                             </a>
+                            <GiCancel 
+                          className="text-secondary dark:text-white lg:text-[22px] text-[18px]"
+                          onClick={()=>setDev(false)}
+                         />
                         </div>
                     </div>
                 )}
