@@ -5,19 +5,24 @@ import {
     FaTiktok,
 } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
-
+import code from '@/public/code.svg'
+import Image from "next/image";
 export default function Dev() {
     const [dev, setDev] = useState(false);
 
     return (
-        <div className={`flex flex-col absolute bottom-[55px] items-center justify-center  bg-secondary h-[35px] rounded-3xl  px-2 z-30 transition-all duration-300 ease-in-out 
-            ${dev ? "w-[140px]" : "w-[80px]"}`}>
+        <div className={`flex flex-col absolute bottom-[55px] items-center justify-center   h-[35px] rounded-3xl  px-2 z-30 transition-all duration-300 ease-in-out 
+            ${dev ? "w-[140px] " : "w-[80px]"}`}>
             <div
                 className="cursor-pointer text-white py-1 "
             >
                 {!dev ? (<div
                     onClick={() => setDev(true)}
-                       >DEV</div>) : (
+                       ><Image
+                       src={code}
+                       alt="Code"
+                       className="h-6"
+                       /></div>) : (
                     <div className="relative flex items-center justify-center">
                        
                         <div className="flex space-x-3 px-5 py-3">
